@@ -49,7 +49,7 @@ install_git_dependency(Agent_tracking https://github.com/cellworld/cellworld_age
 install_git_dependency(Experiment_service https://github.com/cellworld/cellworld_experiment_service
         CMAKE_PROJECT
         IMPORT_TARGETS experiment_service)
-install_git_dependency(Controller https://github.com/germanespinosa/cellworld_pid_controller
+install_git_dependency(Controller https://github.com/cellworld/cellworld_pid_controller
         CMAKE_PROJECT
         IMPORT_TARGETS controller)
 
