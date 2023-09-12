@@ -92,10 +92,13 @@ namespace robot{
             cout << "reset robot" << endl;
         };
 
+        if (!gamepad.buttons.empty() && gamepad.buttons[5].state == 1) human_intervention = true;
+        else human_intervention = false;
+
 
         if (!need_update) return true;
         else need_update = false; // make false once realize same value
-        cout << (int) message[0] << " " << (int) message[1] << endl;
+//        cout << (int) message[0] << " " << (int) message[1] << endl;
 
 
         bool res = connection.send_data(message,3);
@@ -103,7 +106,7 @@ namespace robot{
         message[2] &=~(1UL << 4);
         message[2] &=~(1UL << 5);
         message[2] &=~(1UL << 6);
-        human_intervention = false;
+//        human_intervention = false;
 
         if (reset_robot_agent) {
             std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // TODO: ask German if this sleep is an issue
