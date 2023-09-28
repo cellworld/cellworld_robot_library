@@ -17,6 +17,7 @@ namespace robot{
         char left = limits.convert(left_value);
         // for joystick control press R2
         if (!gamepad.buttons.empty() && gamepad.buttons[5].state == 1){
+            human_intervention = true;
             float joystick_left = (float)-gamepad.axes[1]/JOYSTICK; // normalize this to config file
             if (joystick_left > 0){
                 joystick_left = abs(joystick_left) * (MAX_J - MIN_J) + MIN_J;
@@ -42,6 +43,7 @@ namespace robot{
     void Robot_agent::set_right(double right_value) {
         char right = limits.convert(right_value);
         if (!gamepad.buttons.empty() && gamepad.buttons[5].state == 1){
+            human_intervention = true;
             float joystick_right = (float)-gamepad.axes[4]/JOYSTICK;
             if (joystick_right > 0){
                 joystick_right = abs(joystick_right) * (MAX_J - MIN_J) + MIN_J;
@@ -90,7 +92,6 @@ namespace robot{
             cout << "reset robot" << endl;
         };
 
-        // detect joystick every update
         if (!gamepad.buttons.empty() && gamepad.buttons[5].state == 1) human_intervention = true;
         else human_intervention = false;
 
@@ -193,7 +194,7 @@ namespace robot{
             message{0,0,0},
             limits(limits),
             gamepad("/dev/input/js0"),
-            reset_robot_agent(reset_robot_agent){
+            reset_robot_agent(reset_robot_agent){  // joystick device
         set_leds(true);
     }
 }
