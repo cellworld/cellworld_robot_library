@@ -98,7 +98,7 @@ namespace robot{
 
         if (!need_update) return true;
         else need_update = false; // make false once realize same value
-//        cout << (int) message[0] << " " << (int) message[1] << endl;
+//        cout << "SPEED " << (int) message[0] << " " << (int) message[1] << endl;
 
 
         bool res = connection.send_data(message,3);
