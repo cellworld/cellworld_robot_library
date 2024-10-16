@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
 
     Controller_service::set_logs_folder("controller_logs/");
     Location a,b,c;
-    Controller_server controller_server("../config/pid.json", robot, tracking_client, controller_experiment_client, a, b, c);
+    Controller_server controller_server("../config/pid.json", robot, tracking_client, controller_experiment_client, a, b, c, false);
     if (!controller_server.start(Controller_service::get_port())) {
         cout << "failed to start controller" << endl;
         exit(1);
