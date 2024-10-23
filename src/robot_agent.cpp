@@ -131,8 +131,7 @@ namespace robot{
     }
 
     int Robot_agent::port() {
-        string port_str (std::getenv("ROBOT_PORT")?std::getenv("ROBOT_PORT"):"4500");   // 4500
-        return atoi(port_str.c_str());
+        return ip_port;
     }
 
     void Robot_agent::set_leds(bool val) {
@@ -151,6 +150,7 @@ namespace robot{
         try {
             connection = connection.connect_remote(ip, port);
             ip_address = ip;
+            ip_port = port;
             return true;
         } catch(...) {
             return false;

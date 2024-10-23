@@ -23,10 +23,11 @@ namespace robot {
         void decrease_brightness();
         char message[3];
         ~Robot_agent();
-        static int port();
+        int port();
         controller::Agent_operational_limits limits;
         Gamepad_wrapper gamepad;
         std::string ip_address {"192.168.137.155"};
+        int ip_port=4500;
         bool &reset_robot_agent;
         bool reset_step_one = true;
     private:
